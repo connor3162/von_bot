@@ -8,6 +8,7 @@ import win32api,win32ui,win32con,win32gui
 import keyboard
 import time
 from random import uniform
+from lib.TemplateMatch import TemplateMatcher
 
 k=PyKeyboard()
 
@@ -36,6 +37,8 @@ class VonBot():
 if __name__ == '__main__':
     from main import VonBot
     von_bot = VonBot()
+    template_matcher = TemplateMatcher()
+    template_matcher.ifTemplateExists()
 
     while True:  # making a loop
         if keyboard.is_pressed('f4'):  # if key 'q' is pressed
