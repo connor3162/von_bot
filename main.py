@@ -38,17 +38,15 @@ if __name__ == '__main__':
     from main import VonBot
     von_bot = VonBot()
     template_matcher = TemplateMatcher()
-    template_matcher.ifTemplateExists()
 
     while True:  # making a loop
         if keyboard.is_pressed('f4'):  # if key 'q' is pressed
             print("begining in 5 seconds...")
             time.sleep(5)
             while True:
-                random_wait = uniform(0, 0.2)
-                random_wait = 1 + random_wait
-                time.sleep(random_wait)
                 print("starting new loop..")
+                while not template_matcher.ifTemplateExists("target", "target_mask"):
+                    von_bot.tap_key("num0", 0.05)
                 if keyboard.is_pressed('f5'):
                     exit()
                 von_bot.tap_key("num0", 0.1)
