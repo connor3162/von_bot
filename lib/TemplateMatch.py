@@ -7,7 +7,7 @@ from matplotlib import pyplot as plt
 
 
 class TemplateMatcher:
-    def ifTemplateExists(self, template_name, mask_name: ""):
+    def ifTemplateExists(self, template_name, mask_name="", threshold=0.99, max_x=0):
         # return false if it can't find the template. else return true
         date = str(datetime.date.today())
         time = str(datetime.datetime.now().strftime('%H-%M-%S'))
@@ -23,15 +23,21 @@ class TemplateMatcher:
             template = cv2.imread(os.getcwd() + "/templates/" + template_name + ".png")
             res1 = cv2.matchTemplate(screenshot_color, template, cv2.TM_CCORR_NORMED, mask=mask)
         else:
-            template = cv2.imread(os.getcwd() + "/templates" + template_name + ".png")
+            template = cv2.imread(os.getcwd() + "/templates/" + template_name + ".png")
             res1 = cv2.matchTemplate(screenshot_color, template, cv2.TM_CCORR_NORMED)
-
-        threshold = 0.99
 
         plt.imshow(res1, cmap='gray')
         loc1 = np.where(res1 >= threshold)
         os.remove(file)
-        if len(loc1[0]) > 0 :
-            return True
+
+        if len(loc1[0] > 0):
+            if max_x == 0:
+                return True
+            else:
+                for pt in zip(*loc1[::-1]):
+                    if pt[0] < max_x:
+                        return True
+                    else:
+                        return False
         else:
             return False

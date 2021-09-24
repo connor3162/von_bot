@@ -20,17 +20,21 @@ if __name__ == '__main__':
             time.sleep(5)
             while True:
                 print("starting new loop..")
-                while not template_matcher.ifTemplateExists("target", "target_mask"):
-                    input_manager.tap_key("num0", 0.05)
+                while not template_matcher.ifTemplateExists("target", mask_name="target_mask"):
+                    input_manager.tap_key("num0", 0.025)
+                print("found target reticle")
+                wh`ile not template_matcher.ifTemplateExists("purchase_this_plot_for"):
+                    input_manager.tap_key("num0", 0.075)
+                print("found no button")
+                while not template_matcher.ifTemplateExists("hand", mask_name="hand_mask"):
+                    input_manager.tap_key("num0", 0.025)
+                print("found hand")
+                while not template_matcher.ifTemplateExists("hand", mask_name="hand_mask", max_x=850, threshold=0.95):
+                    input_manager.tap_key("num4", 0.04)
+                print("found hand and yes")
+                input_manager.tap_key("num0", 0.05)
                 if keyboard.is_pressed('f5'):
                     exit()
-                input_manager.tap_key("num0", 0.1)
-                input_manager.tap_key("num0", 0.5)
-                input_manager.tap_key("num0", 0.1)
-                input_manager.tap_key("num0", 0.1)
-                input_manager.tap_key("num0", 0.1)
-                input_manager.tap_key("num4", 0.3)
-                input_manager.tap_key("num0", 0.5)
                 print("ending loop!")
 
 0
