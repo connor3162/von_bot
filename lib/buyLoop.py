@@ -6,7 +6,7 @@ from lib.input import InputManager
 
 user32 = ctypes.windll.user32
 
-class buyLoop:
+class BuyLoop:
     def __init__(self, input_manager: InputManager, template_matcher: TemplateMatcher):
         self.input_manager = input_manager
         self. template_matcher = template_matcher

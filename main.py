@@ -8,6 +8,7 @@ import keyboard
 import time
 from lib.TemplateMatch import TemplateMatcher
 from lib.input import InputManager
+from lib.buyLoop import BuyLoop
 import ctypes
 user32 = ctypes.windll.user32
 
@@ -15,6 +16,7 @@ user32 = ctypes.windll.user32
 if __name__ == '__main__':
         input_manager = InputManager()
         template_matcher = TemplateMatcher()
+        boy_loop = BuyLoop(input_manager, template_matcher)
         monitor_width = user32.GetSystemMetrics(0)
     
         while True:  # making a loop
@@ -23,32 +25,7 @@ if __name__ == '__main__':
                 time.sleep(5)
                 while True:
                     try:
-                        print("starting new loop..")
-                        while not template_matcher.ifTemplateExists("target", mask_name="target_mask"):
-                            input_manager.tap_key("num0", 0.025)
-                        print("found target reticle")
-                        while not template_matcher.ifTemplateExists("purchase_this_plot_for"):
-                            input_manager.tap_key("num0", 0.100)
-                        print("found no button")
-                        while not template_matcher.ifTemplateExists("hand", mask_name="hand_mask"):
-                            input_manager.tap_key("num0", 0.090)
-                        print("found hand")
-                        while not template_matcher.ifTemplateExists("hand", mask_name="hand_mask", max_x=monitor_width * .4427
-                                , threshold=0.95):
-                            input_manager.tap_key("num4", 0.1)
-                        print("found hand and yes")
-                        input_manager.tap_key("num0", 0.05)
-                        if keyboard.is_pressed('f5'):
-                            exit()
-                        print("ending loop!")
+                        ret = boy_loop()
                     except Exception as ex:
                         print(ex)
                         input("test")
-        
-    
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/t time
-from lib.TemplateMatch import TemplateMatcher
-from lib.input import InputManager
-import ctypes
-user32 = ctypes.windll.user32
