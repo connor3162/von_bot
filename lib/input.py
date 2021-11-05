@@ -16,7 +16,8 @@ class InputManager:
         'alt': k.alt_key,' ':' ',';':';','ctrl':k.control_key,'esc':k.escape_key,"f1": k.function_keys[1], "f2": k.function_keys[2],
         "f3": k.function_keys[3], "f4": k.function_keys[4], "f5": k.function_keys[5],"f8": k.function_keys[8], "num0" : k.numpad_keys[0],
         "num1": k.numpad_keys[1], "num2" : k.numpad_keys[2], "num3" : k.numpad_keys[3], "num4" : k.numpad_keys[4], "num5" : k.numpad_keys[5],
-        "num6": k.numpad_keys[6], "num7" : k.numpad_keys[7], "num8" : k.numpad_keys[8], "num9" : k.numpad_keys[9]
+        "num6": k.numpad_keys[6], "num7" : k.numpad_keys[7], "num8" : k.numpad_keys[8], "num9" : k.numpad_keys[9], \
+        "esc" : k.escape_key
     }
 
     def tap_key(self, key, t=0.2):
