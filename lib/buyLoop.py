@@ -10,10 +10,11 @@ class BuyLoop:
     def __init__(self, input_manager: InputManager, template_matcher: TemplateMatcher):
         self.input_manager = input_manager
         self. template_matcher = template_matcher
+        monitor_width = user32.GetSystemMetrics(0)
 
 
     def buy_loop(self, time_to_wait=2):
-        monitor_width = user32.GetSystemMetrics(0)
+
         try:
             start = time.time()
             print("starting new loop..")
@@ -30,7 +31,7 @@ class BuyLoop:
             self.input_manager.tap_key("num0", 0.001)
             self.input_manager.tap_key("num0", 0.001)
             self.input_manager.tap_key("num4", 0.2)
-            while not self.template_matcher.ifTemplateExists("hand", mask_name="hand_mask", max_x=monitor_width \
+            while not self.template_matcher.ifTemplateExists("hand", mask_name="hand_mask", max_x=self.monitor_width \
                                                                                              * .4427, threshold=0.95):
                 print('looking for hand and the yes')
             print("found hand and yes")

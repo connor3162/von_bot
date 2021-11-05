@@ -24,8 +24,4 @@ if __name__ == '__main__':
                 print("begining in 5 seconds...")
                 time.sleep(5)
                 while True:
-                    try:
-                        ret = boy_loop()
-                    except Exception as ex:
-                        print(ex)
-                        input("test")
+                    ret = boy_loop()
