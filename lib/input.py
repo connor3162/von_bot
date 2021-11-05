@@ -21,7 +21,7 @@ class InputManager:
 
     def tap_key(self, key, t=0.2):
         print("pressed_key:" + key)
-        random_wait = uniform(-0.15, 0.15)
+        random_wait = uniform(-0.075, 0.075)
         t = t + (t * random_wait)
         k.tap_key(self.vk[key])
         time.sleep(t)
